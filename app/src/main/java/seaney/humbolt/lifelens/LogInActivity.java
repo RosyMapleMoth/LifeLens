@@ -27,7 +27,12 @@ public class LogInActivity extends AppCompatActivity {
         // set all views
         findViews();
 
-
+        if (ParseUser.getCurrentUser() != null)
+        {
+            Intent i = new Intent(LogInActivity.this, TimeLineActivity.class);
+            startActivity(i);
+            finish();
+        }
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +42,7 @@ public class LogInActivity extends AppCompatActivity {
                         if (user != null) {
                             Intent i = new Intent(LogInActivity.this, TimeLineActivity.class);
                             startActivity(i);
+                            finish();
                         } else {
                             Toast.makeText(getBaseContext(),"Password and Username did not match our records", Toast.LENGTH_SHORT).show();
                         }
@@ -57,6 +63,7 @@ public class LogInActivity extends AppCompatActivity {
                         if (e == null) {
                             Intent i = new Intent(LogInActivity.this, TimeLineActivity.class);
                             startActivity(i);
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(),"Sorry but something went wrong please try again later",Toast.LENGTH_SHORT).show();
                         }

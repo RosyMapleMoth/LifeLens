@@ -12,6 +12,7 @@ import com.parse.SignUpCallback;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import seaney.humbolt.lifelens.Models.Post;
 
 public class ParseApplication extends Application {
 
@@ -28,40 +29,14 @@ public class ParseApplication extends Application {
         builder.networkInterceptors().add(httpLoggingInterceptor);
 
 
+        ParseObject.registerSubclass(Post.class);
+
         Parse.initialize(new Parse.Configuration.Builder(this)
                 .applicationId("LLappID")
                 .clientKey(null)
                 .clientBuilder(builder)
                 .server("https://life-lens.herokuapp.com/parse/").build());
 
-
-        ParseObject testObject = new ParseObject("TestObject");
-
-        // Create the ParseUser
-        ParseUser user = new ParseUser();
-        // Set core properties
-        user.setUsername("joestevens");
-        user.setPassword("secret123");
-        user.setEmail("email@example.com");
-            // Set custom properties
-        user.put("phone", "650-253-0000");
-        // Invoke signUpInBackground
-        user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    // Hooray! Let them use the app now.
-
-                } else {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                }
-            }
-        });
-
-
-        Intent LogIn = new Intent(getApplicationContext(), LogInActivity.class);
-        startActivity(LogIn);
-        Toast.makeText(getApplicationContext(), "it should be changing its stuff", Toast.LENGTH_SHORT).show();
     }
 
 }
