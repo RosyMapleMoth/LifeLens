@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,7 +24,7 @@ import seaney.humbolt.lifelens.Models.Post;
 import seaney.humbolt.lifelens.R;
 import seaney.humbolt.lifelens.adaptor.PostAdaptor;
 
-public class FragmentPosts extends Fragment {
+public class ProfileFragment extends Fragment {
 
     RecyclerView rvPosts;
     List<Post> mposts = new ArrayList<>();
@@ -66,6 +67,7 @@ public class FragmentPosts extends Fragment {
     private void queryPosts()
     {
         ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
+        postQuery.whereContains(Post.KEY_USER, ParseUser.getCurrentUser().getObjectId());
         postQuery.include(Post.KEY_USER);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
@@ -82,3 +84,5 @@ public class FragmentPosts extends Fragment {
         });
     }
 }
+
+

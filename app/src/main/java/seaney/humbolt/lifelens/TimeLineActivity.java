@@ -1,50 +1,23 @@
 package seaney.humbolt.lifelens;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
-import com.parse.SaveCallback;
-
-import java.io.File;
-import java.sql.Time;
-import java.util.List;
 
 import seaney.humbolt.lifelens.Fragments.ComposeFragment;
 import seaney.humbolt.lifelens.Fragments.FragmentPosts;
-import seaney.humbolt.lifelens.Models.Post;
-import seaney.humbolt.lifelens.adaptor.PostAdaptor;
+import seaney.humbolt.lifelens.Fragments.ProfileFragment;
 
 public class TimeLineActivity extends AppCompatActivity {
 
@@ -59,10 +32,8 @@ public class TimeLineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_time_line);
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
-        // define your fragments here
-        //final Fragment fragment1 = new FirstFragment();
-       // final Fragment fragment2 = new SecondFragment();
-        //final Fragment fragment3 = new ThirdFragment();
+
+
 
         btmNavView = findViewById(R.id.bottom_navigation);
 
@@ -78,7 +49,7 @@ public class TimeLineActivity extends AppCompatActivity {
                         frag_compose = new ComposeFragment();
                         break;
                     case R.id.action_profile:
-                        frag_compose = new ComposeFragment();
+                        frag_compose = new ProfileFragment();
                         break;
                     default:
                         frag_compose = new ComposeFragment();
