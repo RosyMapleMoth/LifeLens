@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,7 +53,7 @@ public class PostAdaptor extends RecyclerView.Adapter<PostAdaptor.ViewHolder>
         ParseFile imge = post.getImage();
 
         if (imge != null )
-            Glide.with(con).load(imge.getUrl()).into(viewHolder.image);
+            Glide.with(con).load(imge.getUrl().replace("http","https")).into(viewHolder.image);
     }
 
 // Returns the total count of items in the list
