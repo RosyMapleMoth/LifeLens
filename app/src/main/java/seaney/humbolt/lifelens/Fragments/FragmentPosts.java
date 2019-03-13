@@ -74,6 +74,7 @@ public class FragmentPosts extends Fragment {
                 {
                     return;
                 }
+                mposts.clear();
                 mposts.addAll(objects);
                 Collections.reverse(mposts);
                 adaptor.notifyDataSetChanged();

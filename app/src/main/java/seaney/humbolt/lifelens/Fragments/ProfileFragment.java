@@ -76,6 +76,7 @@ public class ProfileFragment extends Fragment {
                 {
                     return;
                 }
+                mposts.clear();
                 mposts.addAll(objects);
                 Collections.reverse(mposts);
                 adaptor.notifyDataSetChanged();
